@@ -43,6 +43,7 @@ title("FFT Magnitude Spectrum (Built-in)");
 ```
 
 # OUTPUT: 
+![WhatsApp Image 2025-09-09 at 15 37 30_ef7c6f79](https://github.com/user-attachments/assets/0ea70e70-769f-418f-a91f-4456bfab78fa)
 
 
 # RESULT: 
