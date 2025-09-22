@@ -1,49 +1,44 @@
 # EXP 1 A : COMPUTATION OF DFT USING DIRECT AND FFT
 
 # AIM: 
-
-# To Obtain DFT and FFT of a given sequence in SCILAB. 
+To Obtain DFT and FFT of a given sequence in SCILAB. 
 
 # APPARATUS REQUIRED: 
 PC installed with SCILAB. 
 
 # PROGRAM: 
 // DISCRETE FOURIER TRANSFORM 
-```
 clc;
 clear;
-x = [1 2 3 4];
-N = length(x);
-n = 0:N-1;
-X = zeros(1,N);
 
+// Take input discrete signal
+x = input("Enter discrete signal as [x1 x2 ...]: ");
+N = length(x);
+
+// Initialize DFT output
+X = zeros(1, N);
+
+// DFT calculation using formula
 for k = 0:N-1
-    for m = 0:N-1
-        X(k+1) = X(k+1) + x(m+1)exp(-%i*2%pi*k*m/N);
+    for n = 0:N-1
+        X(k+1) = X(k+1) + x(n+1) * exp(-%i * 2 * %pi * k * n / N);
     end
 end
 
-Y = fft(x,-1);
+// Frequency axis (normalized)
+f = (0:N-1) / N;
 
-figure;
-subplot(3,1,1);
-plot2d3(n,x);
-xlabel("n"); ylabel("x[n]");
-title("Input Sequence");
+// Plot magnitude and phase spectrum
+subplot(2,1,1);
+plot2d3(f, abs(X));
+xtitle("Magnitude Spectrum of DFT");
 
-subplot(3,1,2);
-plot2d3(n,abs(X));
-xlabel("k"); ylabel("|X(k)|");
-title("DFT Magnitude Spectrum (Direct)");
-
-subplot(3,1,3);
-plot2d3(n,abs(Y));
-xlabel("k"); ylabel("|Y(k)|");
-title("FFT Magnitude Spectrum (Built-in)");
-```
-
+subplot(2,1,2);
+plot2d3(f, atan(imag(X), real(X))); // atan2 for phase
+xtitle("Phase Spectrum of DFT");
 # OUTPUT: 
-![WhatsApp Image 2025-09-09 at 15 37 30_ef7c6f79](https://github.com/user-attachments/assets/0ea70e70-769f-418f-a91f-4456bfab78fa)
+![WhatsApp Image 2025-09-08 at 15 59 38_4502469a](https://github.com/user-attachments/assets/e2a6c663-f09e-48db-8735-be818f9034d3)
 
 
 # RESULT: 
+ DFT and FFT of a given sequence in SCILAB is obtained.
